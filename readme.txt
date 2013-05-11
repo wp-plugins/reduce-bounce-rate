@@ -3,7 +3,7 @@ Contributors: Okoth1
 Tags: bounce rate, analytics, google, google analytics, statistics, stats, tracking, visit, time on site
 Requires at least: 1.5.1
 Tested up to: 3.5.1
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
