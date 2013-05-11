@@ -58,6 +58,10 @@ No.
 
 == Changelog ==
 
+= 1.1 =
+* Changed screenshots
+* May 11, 2013
+
 = 1.0 =
 * Initial release
 * May 9, 2013
