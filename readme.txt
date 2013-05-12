@@ -56,8 +56,8 @@ No.
 
 == Screenshots ==
 
-1. Increase in average visit duration
-2. Decrease in bounce rate
+1. Increase in average visit duration (plugin installed op April 28)
+2. Decrease in bounce rate (plugin installed op April 28)
 
 == Changelog ==
 
