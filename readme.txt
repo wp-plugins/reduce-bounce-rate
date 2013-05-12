@@ -15,8 +15,8 @@ Increase visitors' Time on Site and reduce the Bounce Rate in Google Analytics. 
 Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics calculates the Time On Site based on the length of time between a user entering your site and their last page view. This won't give you the REAL Time on Site and Bounce Rate stats.
 
 **See these screenshots**
-[Increase Time on Site](http://themesolutions.com/reduce-bounce-rate/timebounce-1.png “Increase Time on Site”)
-[Decrease Bounce Rate](http://themesolutions.com/reduce-bounce-rate/timebounce-2.png “Decrease Bounce Rate”)
+[Increase Time on Site](http://themesolutions.com/reduce-bounce-rate/timebounce-1.png)
+[Decrease Bounce Rate](http://themesolutions.com/reduce-bounce-rate/timebounce-2.png)
 
 ** Worst case scenario: **
 A visitor is very interested in one of your pages and takes 2 minutes and 13 seconds to read the article. After this he bookmarks the page and leaves. 
