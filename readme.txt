@@ -25,9 +25,10 @@ This visitor stayed 2 minutes and 13 seconds on your page, but never interacted 
 **Another bad scenario**
 A visitor goes to your website and stays 1 minute and 11 seconds on the first page. Then, he goes to a second page where he stays 1 minute and 12 seconds. Without any interaction on this page, he leaves. Since Google doesn't know how long your visitor stayed on the second page, Google will add only the time the visitor spent on the first page to Analytics. Not fair, right?
 
-This plugin sets this straight. It will tell Google Analytics every 10 seconds that your visitor is still on the page and on top of that it will also let Google know there was some interaction on the page.
+This plugin sets this straight. It will tell Google Analytics every 10 seconds that your visitor is still on the page and on top of that it will also let Google know there was some interaction on that page.
 
 This plugin makes use of Google's Event Tracking API and is totally accepted by Google. The results are more accurate Time on Site and Bounce Rate statistics.
+The plugin is based on a script made by Brian Cray.
 
 Simple and effective. Out-of-the-box.
 
