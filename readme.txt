@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Requires at least: 1.5.1
 Tested up to: 3.5.1
-Stable tag: 1.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ A visitor goes to your website and stays 1 minute and 11 seconds on the first pa
 
 This plugin sets this straight. It will tell Google Analytics every 10 seconds that your visitor is still on the page and on top of that it will also let Google know there was some interaction on the page.
 
-This plugin makes use of Google's Event Tracking API and is totally accepted by Google. The result are more accurate Time on Site and Bounce Rate statistics.
+This plugin makes use of Google's Event Tracking API and is totally accepted by Google. The results are more accurate Time on Site and Bounce Rate statistics.
 
 Simple and effective. Out-of-the-box.
 
@@ -46,7 +46,7 @@ You are absolutely right. There are no settings. It works out-of-the-box. No act
 = How do I know it is working =
 
 The script will be added to the bottom of your website. You can see the script between the "Begin Real Time on Site and Bounce Rate" and "End Real Time on Site and Bounce Rate" comments.
-There is only one condition: you theme needs to make use of wp_footer(). If this is not present, the plugin will not work.
+There is only one condition: your theme needs to make use of wp_footer(). If this is not present, the plugin will not work.
 
 After some days, you will probably see the Bounce Rate drop in Google Analytics. Then you will know it is working.
 
