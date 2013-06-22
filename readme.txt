@@ -59,8 +59,13 @@ No.
 
 == Changelog ==
 
+= 1.2 =
+* Checked WP 3.6
+* All good!
+* June 22, 2013
+
 = 1.1 =
-* Changed screenshots
+* Change screenshots
 * May 11, 2013
 
 = 1.0 =
