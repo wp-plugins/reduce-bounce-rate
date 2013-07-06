@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Requires at least: 1.5.1
 Tested up to: 3.6
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,8 +59,19 @@ No.
 
 == Changelog ==
 
+
+= 1.3 =
+* Removed error: ReferenceError: _gaq is not defined
+* Thanks to Martin for noticing it
+* July 6, 2013
+
+= 1.2 =
+* Checked WP 3.6
+* All good!
+* June 22, 2013
+
 = 1.1 =
-* Changed screenshots
+* Change screenshots
 * May 11, 2013
 
 = 1.0 =
