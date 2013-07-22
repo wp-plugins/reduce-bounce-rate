@@ -48,9 +48,9 @@ There is only one condition: your theme needs to make use of wp_footer(). If thi
 
 After some days, you will probably see the Bounce Rate drop in Google Analytics. Then you will know it is working.
 
-= Does it matter whether I use the old or new tracking code? =
+= Does it matter which version of the tracking code I am using? =
 
-No.
+Yes. Most people use the Traditional or the Asynchronous Syntax tracking code (ga.js). This plugin works for these tracking codes. Recently Google introduced a new tracking code (analytics.js) which is currently in public beta fase. This plugin doesn't work for this tracking code yet. As soon as more people are going to use the new tracking code, I will put a setting in the (future) option page where you can define your tracking code version.
 
 == Screenshots ==
 
