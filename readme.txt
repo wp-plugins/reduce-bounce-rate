@@ -3,7 +3,7 @@ Contributors: Okoth1
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Requires at least: 1.5.1
-Tested up to: 3.6
+Tested up to: 3.7
 Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,8 +60,13 @@ Yes. Most people use the Traditional or the Asynchronous Syntax tracking code (g
 == Changelog ==
 
 
+= 1.4 =
+* Checked WP 3.7
+* All good!
+* October 23, 2013
+
 = 1.3 =
-* Removed error: ReferenceError: _gaq is not defined
+* Fixed error: ReferenceError: _gaq is not defined
 * Thanks to Martin for noticing it
 * July 6, 2013
 

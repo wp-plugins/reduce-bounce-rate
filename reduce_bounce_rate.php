@@ -4,10 +4,10 @@ Plugin Name: Reduce Bounce Rate
 Plugin URI: http://wordpress.org/extend/plugins/reduce-bounce-rate/
 Description: Reduce your bounce rate remarkably by adding some code to the footer (wp_footer() required!). No options, out-of-the-box.
 Author: Okoth1
-Version: 1.3
+Version: 1.4
 License: GPLv2
 
-/* Javascript written by Brian Cray on April 12th, 2011 */
+/* Script written by Brian Cray on April 12th, 2011 */
 
 
 function reduce_bounce_rate() {
