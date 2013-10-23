@@ -61,7 +61,7 @@ Yes. Most people use the Traditional or the Asynchronous Syntax tracking code (g
 
 
 = 1.3 =
-* Removed error: ReferenceError: _gaq is not defined
+* Fixed error: ReferenceError: _gaq is not defined
 * Thanks to Martin for noticing it
 * July 6, 2013
 
