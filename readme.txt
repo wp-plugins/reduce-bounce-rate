@@ -60,6 +60,11 @@ Yes. Most people use the Traditional or the Asynchronous Syntax tracking code (g
 == Changelog ==
 
 
+= 1.5 =
+* Checked WP 3.8
+* All good!
+* December 13, 2013
+
 = 1.4 =
 * Checked WP 3.7
 * All good!
