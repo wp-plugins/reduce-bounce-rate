@@ -3,7 +3,7 @@ Contributors: Okoth1
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
