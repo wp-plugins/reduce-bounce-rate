@@ -243,6 +243,15 @@ function rbr_settings()
 }
 add_action('admin_menu', 'rbr_settings');
 
+// Add settings link on plugin page
+function rbr_settings_link($links) { 
+  $settings_link = '<a href="options-general.php?page=rbr">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'rbr_settings_link' );
+
 function rbr_scripts() 
 {
 	$rbrtype = get_option('rbr_type');
