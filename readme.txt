@@ -8,7 +8,7 @@ Stable tag: 2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Get the real Time On Site and Bounce Rate in Google Analytics. Simple and effective.
+Get the real Bounce Rate and Time On Site in Google Analytics. Simple and effective.
 
 == Description ==
 Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics calculates the Time On Site based on the length of time between a user entering your site and their last page view. This won\'t give you the REAL Time on Site and Bounce Rate stats.
