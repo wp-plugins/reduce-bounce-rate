@@ -59,7 +59,7 @@ Yes, and you can use the options on the Settings Page to fine-tune how and when 
 
 = How do I know it is working? =
 
-Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script>
+Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script> or when you use analytics.js for /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script>
 
 By default, the script will be added to the bottom of your website. If this line is not there, your theme might not have wp_footer() in the footer.php.
 
