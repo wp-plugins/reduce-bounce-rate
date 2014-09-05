@@ -4,7 +4,7 @@ Plugin Name: Reduce Bounce Rate
 Plugin URI: http://wordpress.org/extend/plugins/reduce-bounce-rate/
 Description: Get the real Bounce Rate and pageviews into Google Analytics.
 Author: Okoth1
-Version: 2.3
+Version: 2.4
 License: GPLv3
 
 	This program is free software: you can redistribute it and/or modify

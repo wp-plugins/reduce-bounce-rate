@@ -3,12 +3,12 @@ Contributors: Okoth1
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
-Tested up to: 3.9.2
-Stable tag: 2.3
+Tested up to: 4.0
+Stable tag: 2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Get the real Time On Site and Bounce Rate in Google Analytics. Simple and effective.
+Get the real Bounce Rate and Time On Site in Google Analytics. Simple and effective.
 
 == Description ==
 Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics calculates the Time On Site based on the length of time between a user entering your site and their last page view. This won\'t give you the REAL Time on Site and Bounce Rate stats.
@@ -59,7 +59,7 @@ Yes, and you can use the options on the Settings Page to fine-tune how and when 
 
 = How do I know it is working? =
 
-Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script>
+Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script> or when you use analytics.js for /wp-content/plugins/reduce-bounce-rate/js/analyticsjs.js'></script>
 
 By default, the script will be added to the bottom of your website. If this line is not there, your theme might not have wp_footer() in the footer.php.
 
@@ -90,6 +90,12 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 2.4 =
+* Added plugin icon
+* Checked with WP 4.0
+* All good!
+* September 4, 2014
+
 = 2.3 =
 * Checked with WP 3.9.2
 * All good!
