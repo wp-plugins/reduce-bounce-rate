@@ -4,139 +4,214 @@ Plugin Name: Reduce Bounce Rate
 Plugin URI: http://wordpress.org/extend/plugins/reduce-bounce-rate/
 Description: Get the real Bounce Rate and pageviews into Google Analytics.
 Author: Okoth1
-Version: 2.4
+Version: 3.0
 License: GPLv3
 
-	This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see http://www.gnu.org/licenses/.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/.
 */
 
-function rbr_load_scripts($hook)
-{
-	global $rbr_settings_page;
-	if($hook != $rbr_settings_page) 
-	return;
-wp_enqueue_style( 'rbr-style', plugins_url( 'reduce-bounce-rate/css/rbr-style.css' , dirname(__FILE__) ) );
-wp_enqueue_script( 'rbr-jquery', plugins_url( 'reduce-bounce-rate/js/rbr-jquery.js' , dirname(__FILE__) ) );
-}
-add_action('admin_enqueue_scripts', 'rbr_load_scripts');
+function rbr_load_scripts( $hook )
+ {
+  global $rbr_settings_page;
+  if ( $hook != $rbr_settings_page )
+    return;
+  wp_enqueue_style( 'rbr-style', plugins_url( 'reduce-bounce-rate/css/rbr-style.css', dirname( __FILE__ ) ) );
+  wp_enqueue_script( 'rbr-jquery', plugins_url( 'reduce-bounce-rate/js/rbr-jquery.js', dirname( __FILE__ ) ) );
+ }
+add_action( 'admin_enqueue_scripts', 'rbr_load_scripts' );
 
-$rbr_defaults=array(
-	'rbr_type'=>'gajs',
-	'rbr_place'=>'footer',
-	'rbr_scroll'=>'scrollyes',
-	'rbr_event'=>10,
-	'rbr_noevent'=>'',
-	'rbr_nomaxtime'=>'',
-	'rbr_time'=>900
+$rbr_defaults = array(
+   'rbr_pause' => 'pauseno',
+  'rbr_disableadmin' => 'disableadminno',
+  'rbr_type' => 'gajs',
+  'rbr_place' => 'footer',
+  'rbr_scroll' => 'scrollyes',
+  'rbr_event' => 10,
+  'rbr_noevent' => '',
+  'rbr_nomaxtime' => '',
+  'rbr_time' => 900 
 );
 
-function rbr_init()
-{
-	global $rbr_defaults;
-	foreach($rbr_defaults as $optName=>$optDefault)
-	{
-		if(!get_option($optName))
-		{
-			update_option($optName,$optDefault);
-		}
-	}
-}
-add_action("init","rbr_init");
+function rbr_init( )
+ {
+  global $rbr_defaults;
+  foreach ( $rbr_defaults as $optName => $optDefault )
+   {
+    if ( !get_option( $optName ) )
+     {
+      update_option( $optName, $optDefault );
+     }
+   }
+ }
+add_action( "init", "rbr_init" );
 
-function rbr_options() 
-{ ?>
+function rbr_options( )
+ {
+?>
 
 <h1>Reduce Bounce Rate Options</h1>
 <hr />
-<?php 
-if($_POST['rbr_show'] == 'go') 
-{
-	$rbrtype = $_POST['rbr_type'];
-	update_option('rbr_type', $rbrtype);
-	
-	$rbrplace = $_POST['rbr_place'];
-	update_option('rbr_place', $rbrplace);
-	
-	$rbrscroll = $_POST['rbr_scroll'];
-	update_option('rbr_scroll', $rbrscroll);
-	
-	$rbrnoevent = $_POST['rbr_noevent'];
-	update_option('rbr_noevent', $rbrnoevent);
-	
-	$rbrnomaxtime = $_POST['rbr_nomaxtime'];
-	update_option('rbr_nomaxtime', $rbrnomaxtime);	
-
-	$rbrevent = $_POST['rbr_event'];
-	//clean the input, only integer numbers are allowed here
-	preg_match_all('/(\d+)(\D|\b|$)/smUi',$rbrevent,$m,PREG_PATTERN_ORDER);
-	if(count($m[0])>0)
-	{
-		$rbrevent=(int)$m[1][0];
-	}
-	else
-	{
-		$rbrevent=0;
-	}
-	//clean the input, only integer numbers are allowed here
-	update_option('rbr_event', $rbrevent);
-	
-	$rbrtime = $_POST['rbr_time'];
-	//clean the input, only integer numbers are allowed here
-	preg_match_all('/(\d+)(\D|\b|$)/smUi',$rbrtime,$m,PREG_PATTERN_ORDER);
-	if(count($m[0])>0)
-	{
-		$rbrtime=(int)$m[1][0];
-	}
-	else
-	{
-		$rbrtime=0;
-	}
-	//clean the input, only integer numbers are allowed here
-	update_option('rbr_time', $rbrtime);
+<?php
+  if ( $_POST[ 'rbr_show' ] == 'go' )
+   {
+    $rbrpause = $_POST[ 'rbr_pause' ];
+    update_option( 'rbr_pause', $rbrpause );
+    
+    $rbrdisableadmin = $_POST[ 'rbr_disableadmin' ];
+    update_option( 'rbr_disableadmin', $rbrdisableadmin );
+    
+    $rbrtype = $_POST[ 'rbr_type' ];
+    update_option( 'rbr_type', $rbrtype );
+    
+    $rbrplace = $_POST[ 'rbr_place' ];
+    update_option( 'rbr_place', $rbrplace );
+    
+    $rbrscroll = $_POST[ 'rbr_scroll' ];
+    update_option( 'rbr_scroll', $rbrscroll );
+    
+    $rbrnoevent = $_POST[ 'rbr_noevent' ];
+    update_option( 'rbr_noevent', $rbrnoevent );
+    
+    $rbrnomaxtime = $_POST[ 'rbr_nomaxtime' ];
+    update_option( 'rbr_nomaxtime', $rbrnomaxtime );
+    
+    $rbrevent = $_POST[ 'rbr_event' ];
+    //clean the input, only integer numbers are allowed here
+    preg_match_all( '/(\d+)(\D|\b|$)/smUi', $rbrevent, $m, PREG_PATTERN_ORDER );
+    if ( count( $m[ 0 ] ) > 0 )
+     {
+      $rbrevent = (int) $m[ 1 ][ 0 ];
+     }
+    else
+     {
+      $rbrevent = 0;
+     }
+    //clean the input, only integer numbers are allowed here
+    update_option( 'rbr_event', $rbrevent );
+    
+    $rbrtime = $_POST[ 'rbr_time' ];
+    //clean the input, only integer numbers are allowed here
+    preg_match_all( '/(\d+)(\D|\b|$)/smUi', $rbrtime, $m, PREG_PATTERN_ORDER );
+    if ( count( $m[ 0 ] ) > 0 )
+     {
+      $rbrtime = (int) $m[ 1 ][ 0 ];
+     }
+    else
+     {
+      $rbrtime = 0;
+     }
+    //clean the input, only integer numbers are allowed here
+    update_option( 'rbr_time', $rbrtime );
 ?>
-<div class="notif"><p><?php _e('<span class="bigbold">&#10004;</span> Options saved' ); ?></p></div>
-<?php 
-} else 
-{
-	$rbrtype = get_option('rbr_type');
-	$rbrplace = get_option('rbr_place');
-	$rbrscroll = get_option('rbr_scroll');
-	$rbrevent = get_option('rbr_event');
-	$rbrnoevent = get_option('rbr_noevent');
-	$rbrtime = get_option('rbr_time');
-	$rbrnomaxtime = get_option('rbr_nomaxtime');
-}
+<div class="notif"><p><?php
+    _e( '<span class="bigbold">&#10004;</span> Options saved' );
+?></p></div>
+<?php
+   }
+  else
+   {
+    $rbrpause        = get_option( 'rbr_pause' );
+    $rbrdisableadmin = get_option( 'rbr_disableadmin' );
+    $rbrtype         = get_option( 'rbr_type' );
+    $rbrplace        = get_option( 'rbr_place' );
+    $rbrscroll       = get_option( 'rbr_scroll' );
+    $rbrevent        = get_option( 'rbr_event' );
+    $rbrnoevent      = get_option( 'rbr_noevent' );
+    $rbrtime         = get_option( 'rbr_time' );
+    $rbrnomaxtime    = get_option( 'rbr_nomaxtime' );
+   }
 ?>
-<form class="script-form" name="rbr_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+<form class="script-form" name="rbr_form" method="post" action="<?php
+  echo str_replace( '%7E', '~', $_SERVER[ 'REQUEST_URI' ] );
+?>">
 <fieldset>
 <input type="hidden" name="rbr_show" value="go">
+<h2>Give this plugin a break!</h2>
+<p>Remove all plugin code from the page source without deactivating the plugin.</p>
+<label class="place">
+<input type="radio" id="radio1" name="rbr_pause" <?php
+  if ( $rbrpause == 'pauseyes' )
+   {
+?> checked="checked" <?php
+   }
+?> value="pauseyes" size="20">
+Yes</label>
+<br />
+<label class="place">
+<input type="radio" id="radio2" name="rbr_pause" <?php
+  if ( $rbrpause == 'pauseno' )
+   {
+?> checked="checked" <?php
+   }
+?> value="pauseno" size="20">
+No (Default)</label>
+<div class="jbut">Info</div>
+<div class="jslid">
+<p>If you set this option to yes, the plugin will be disabled. Data will still being send to Google Analytics if the GA tracking code is present on your website.</p> 
+<p>If you don't want any tracking data to be send to GA, please remove the tracking code itself.</p>
+</div>
+<h2>Disable for Administrators only</h2>
+<p>Use this plugin for anyone but the Admins.</p>
+<label class="place">
+<input type="radio" id="radio3" name="rbr_disableadmin" <?php
+  if ( $rbrdisableadmin == 'disableadminyes' )
+   {
+?> checked="checked" <?php
+   }
+?> value="disableadminyes" size="20">
+Yes</label>
+<br />
+<label class="place">
+<input type="radio" id="radio4" name="rbr_disableadmin" <?php
+  if ( $rbrdisableadmin == 'disableadminno' )
+   {
+?> checked="checked" <?php
+   }
+?> value="disableadminno" size="20">
+No (Default)</label>
+<div class="jbut">Info</div>
+<div class="jslid">
+<p>Some people automatically remove the Google Analytics tracking code for users with an Administrator role. 
+When someone doesn’t track Administrators, the code of this plugin will still show up in the page’s source code.</p> 
+<p>To remove the code when you don’t track Administrators, choose Yes. The plugin will work for visitors with any other role.</p>
+<p>To use the plugin for all visitors (including Administrators), choose No.</p>
+</div>
 <h2>Tracking Code</h2>
 <p>Asynchronous Syntax (ga.js) or Universal Analytics tracking code (analytics.js)</p>
 <label class="trackingtype">
-<input type="radio" id="radio1" name="rbr_type" <?php if($rbrtype=='gajs'){ ?> checked="checked" <?php } ?> value="gajs" size="20">
+<input type="radio" id="radio5" name="rbr_type" <?php
+  if ( $rbrtype == 'gajs' )
+   {
+?> checked="checked" <?php
+   }
+?> value="gajs" size="20">
 ga.js (Default)</label>
 <br />
 <label class="trackingtype">
-<input type="radio" id="radio2" name="rbr_type" <?php if($rbrtype=='analyticsjs'){ ?> checked="checked" <?php } ?> value="analyticsjs" size="20">
+<input type="radio" id="radio6" name="rbr_type" <?php
+  if ( $rbrtype == 'analyticsjs' )
+   {
+?> checked="checked" <?php
+   }
+?> value="analyticsjs" size="20">
 analytics.js </label>
 <div class="jbut">Info</div>
 <div class="jslid"><span class="jtbold">How do I know what tracking code I am using?</span>
 <p>Look at the page's source code.</p>
 <p>The ga.js tracking code looks more or less like this</p>
-<?php 
-highlight_string(
-"<script type='text/javascript'>
+<?php
+  highlight_string( "<script type='text/javascript'>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-XXXXX-X']);
 _gaq.push(['_trackPageview']);
@@ -145,20 +220,20 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-</script>"); 
+</script>" );
 ?>
 <br />
 <br />
 <p>The analytics.js tracking code looks like this</p>
-<?php highlight_string(
-"<script>
+<?php
+  highlight_string( "<script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-XXXX-Y', 'auto');
 ga('send', 'pageview');
-</script>"); 
+</script>" );
 ?>
 <br />
 <br />
@@ -167,11 +242,21 @@ ga('send', 'pageview');
 <h2>Code placement</h2>
 <p>Where do you want to put the code?</p>
 <label class="place">
-<input type="radio" id="radio3" name="rbr_place" <?php if($rbrplace=='footer'){ ?> checked="checked" <?php } ?> value="footer" size="20">
+<input type="radio" id="radio7" name="rbr_place" <?php
+  if ( $rbrplace == 'footer' )
+   {
+?> checked="checked" <?php
+   }
+?> value="footer" size="20">
 Footer (Recommended) </label>
 <br />
 <label class="place">
-<input type="radio" id="radio4" name="rbr_place" <?php if($rbrplace=='header'){ ?> checked="checked" <?php } ?> value="header" size="20">
+<input type="radio" id="radio8" name="rbr_place" <?php
+  if ( $rbrplace == 'header' )
+   {
+?> checked="checked" <?php
+   }
+?> value="header" size="20">
 Header (make sure the code is placed after your Google Analytics tracking code) </label>
 <div class="jbut">Info</div>
 <div class="jslid">
@@ -181,11 +266,21 @@ Header (make sure the code is placed after your Google Analytics tracking code) 
 <h2>Scroll on page</h2>
 <p>Do you want to track page scrolls?</p>
 <label class="radio">
-<input type="radio" id="radio5" name="rbr_scroll" <?php if($rbrscroll=='scrollyes'){ ?> checked="checked" <?php } ?> value="scrollyes" size="20">
+<input type="radio" id="radio9" name="rbr_scroll" <?php
+  if ( $rbrscroll == 'scrollyes' )
+   {
+?> checked="checked" <?php
+   }
+?> value="scrollyes" size="20">
 Yes (Recommended) </label>
 <br />
 <label class="radio">
-<input type="radio" id="radio6" name="rbr_scroll" <?php if($rbrscroll=='scrollno'){ ?> checked="checked" <?php } ?> value="scrollno" size="20">
+<input type="radio" id="radio10" name="rbr_scroll" <?php
+  if ( $rbrscroll == 'scrollno' )
+   {
+?> checked="checked" <?php
+   }
+?> value="scrollno" size="20">
 No </label>
 <div class="jbut">Info</div>
 <div class="jslid">
@@ -196,12 +291,19 @@ No </label>
 <h2>Fire an event</h2>
 <p>Every how many seconds do you want to send the message to Analytics that people are still on the page? <span class="whole">Whole numbers only.</span></p>
 <label class="textevent"> Every
-<input type="text" id="text1" name="rbr_event" value="<?php echo $rbrevent;?>" size="1">
+<input type="text" id="text1" name="rbr_event" value="<?php
+  echo $rbrevent;
+?>" size="1">
 seconds</label>
 <br />
 <br />
 <label class="textnoevent">
-<input type="checkbox" id="noevent" name="rbr_noevent" <?php if($rbrnoevent=='noeventyes'){ ?> checked="checked" <?php } ?> value="noeventyes" size="20">
+<input type="checkbox" id="noevent" name="rbr_noevent" <?php
+  if ( $rbrnoevent == 'noeventyes' )
+   {
+?> checked="checked" <?php
+   }
+?> value="noeventyes" size="20">
 <span class="boldit">I don't want to use time events.</span></label>
 <div class="jbut">Info</div>
 <div class="jslid">
@@ -217,12 +319,19 @@ You don’t need to worry if you have a relatively small number of visitors, but
 <h2>Maximum Tracking Time</h2>
 <p>How long do you want to track people on a single page (in seconds). <span class="whole">Whole numbers only.</span></p>
 <label class="texttime"> Log for
-<input type="text" id="text2" name="rbr_time" value="<?php echo $rbrtime;?>" size="3">
+<input type="text" id="text2" name="rbr_time" value="<?php
+  echo $rbrtime;
+?>" size="3">
 seconds. </label>
 <br />
 <br />
 <label class="textnomaxtime">
-<input type="checkbox" id="nomaxtime" name="rbr_nomaxtime" <?php if($rbrnomaxtime=='nomaxtimeyes'){ ?> checked="checked" <?php } ?> value="nomaxtimeyes" size="20">
+<input type="checkbox" id="nomaxtime" name="rbr_nomaxtime" <?php
+  if ( $rbrnomaxtime == 'nomaxtimeyes' )
+   {
+?> checked="checked" <?php
+   }
+?> value="nomaxtimeyes" size="20">
 <span class="boldit">I don't want to set a Maximum Tracking Time.</span></label>
 <div class="jbut">Info</div>
 <div class="jslid">
@@ -235,63 +344,102 @@ seconds. </label>
 </fieldset>
 </form>
 <?php
-}
-function rbr_settings() 
-{
-	global $rbr_settings_page;
-	$rbr_settings_page = add_options_page("rbr", "Reduce Bounce Rate", 'manage_options', "rbr", "rbr_options");
-}
-add_action('admin_menu', 'rbr_settings');
+ }
+function rbr_settings( )
+ {
+  global $rbr_settings_page;
+  $rbr_settings_page = add_options_page( "rbr", "Reduce Bounce Rate", 'manage_options', "rbr", "rbr_options" );
+ }
+add_action( 'admin_menu', 'rbr_settings' );
 
 // Add settings link on plugin page
-function rbr_settings_link($links) { 
-  $settings_link = '<a href="options-general.php?page=rbr">Settings</a>'; 
-  array_unshift($links, $settings_link); 
-  return $links; 
-}
-$plugin = plugin_basename(__FILE__); 
-add_filter("plugin_action_links_$plugin", 'rbr_settings_link' );
+function rbr_settings_link( $links )
+ {
+  $settings_link = '<a href="options-general.php?page=rbr">Settings</a>';
+  array_unshift( $links, $settings_link );
+  return $links;
+ }
+$plugin = plugin_basename( __FILE__ );
+add_filter( "plugin_action_links_$plugin", 'rbr_settings_link' );
 
-function rbr_scripts() 
-{
-	$rbrtype = get_option('rbr_type');
-	if(!is_admin() && $rbrtype=='gajs')
-	{
-		$rbrplace = get_option('rbr_place');
-		wp_enqueue_script('rbr_scripts', plugins_url('js/gajs.js',__FILE__), array('jquery'),'',($rbrplace=='footer'));
-	} else 
-		{
-			$rbrplace = get_option('rbr_place');
-			wp_enqueue_script('rbr_scripts', plugins_url('js/analyticsjs.js',__FILE__), array('jquery'),'',($rbrplace=='footer'));
-		}
-}
-add_action('wp_enqueue_scripts', 'rbr_scripts', 999);
 
-function rbr_st_control_vars() 
-{
-	if(!is_admin())
-	{
-		$rbrscroll = (get_option('rbr_scroll')=="scrollyes");
-		$rbrevent = get_option('rbr_event');
-		$rbrtime = get_option('rbr_time');
-		$rbrnoevent = (get_option('rbr_noevent')=="noeventyes");
-		$rbrnomaxtime = (get_option('rbr_nomaxtime')=="nomaxtimeyes");
+function rbr_scripts( )
+ {
+  if ( current_user_can( 'manage_options' ) && get_option( 'rbr_disableadmin' ) == "disableadminyes" )
+   {
+   }
+  else
+   {
+    $rbrtype = get_option( 'rbr_type' );
+    if ( get_option( 'rbr_pause' ) == "pauseno" && $rbrtype == 'gajs' )
+     {
+      $rbrplace = get_option( 'rbr_place' );
+      wp_enqueue_script( 'rbr_scripts', plugins_url( 'js/gajs.js', __FILE__ ), array(
+         'jquery' 
+      ), '', ( $rbrplace == 'footer' ) );
+      
+     }
+    elseif ( get_option( 'rbr_pause' ) == "pauseno" && $rbrtype == 'analyticsjs' )
+     {
+      $rbrplace = get_option( 'rbr_place' );
+      wp_enqueue_script( 'rbr_scripts', plugins_url( 'js/analyticsjs.js', __FILE__ ), array(
+         'jquery' 
+      ), '', ( $rbrplace == 'footer' ) );
+     }
+    
+    else
+     {
+     }
+   }
+ }
+add_action( 'wp_enqueue_scripts', 'rbr_scripts', 999 );
+
+
+function rbr_st_control_vars( )
+ {
+  if ( current_user_can( 'manage_options' ) && get_option( 'rbr_disableadmin' ) == "disableadminyes" )
+   {
+   }
+  else
+   {
+    if ( get_option( 'rbr_pause' ) == "pauseno" )
+     {
+      $rbrscroll    = ( get_option( 'rbr_scroll' ) == "scrollyes" );
+      $rbrevent     = get_option( 'rbr_event' );
+      $rbrtime      = get_option( 'rbr_time' );
+      $rbrnoevent   = ( get_option( 'rbr_noevent' ) == "noeventyes" );
+      $rbrnomaxtime = ( get_option( 'rbr_nomaxtime' ) == "nomaxtimeyes" );
 ?>
 <script type="text/javascript">
-var trackScrolling=<?php echo ($rbrscroll===true)?'true':'false';?>;
-var stLogInterval=<?php echo $rbrevent?>*1000;
-var cutOffTime=<?php echo $rbrtime?>;
-var trackNoEvents=<?php echo ($rbrnoevent===true)?'true':'false';?>;
-var trackNoMaxTime=<?php echo ($rbrnomaxtime===true)?'true':'false';?>;
+var trackScrolling=<?php
+      echo ( $rbrscroll === true ) ? 'true' : 'false';
+?>;
+var stLogInterval=<?php
+      echo $rbrevent;
+?>*1000;
+var cutOffTime=<?php
+      echo $rbrtime;
+?>;
+var trackNoEvents=<?php
+      echo ( $rbrnoevent === true ) ? 'true' : 'false';
+?>;
+var trackNoMaxTime=<?php
+      echo ( $rbrnomaxtime === true ) ? 'true' : 'false';
+?>;
 <?php
-	if(is_singular())
-{?>
-var docTitle='<?php echo str_replace("'","\'",the_title('','',false));?>';
+      if ( is_singular() )
+       {
+?>
+var docTitle='<?php
+        echo str_replace( "'", "\'", the_title( '', '', false ) );
+?>';
 <?php
-}?>
+       }
+?>
 </script>
 <?php
-	}
-}
-add_action('wp_head','rbr_st_control_vars',1);
+     }
+   }
+ }
+add_action( 'wp_head', 'rbr_st_control_vars', 1 );
 ?>

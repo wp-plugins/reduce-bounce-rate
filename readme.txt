@@ -4,7 +4,7 @@ Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
 Tested up to: 4.0
-Stable tag: 2.4
+Stable tag: 3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,6 +20,7 @@ Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics 
 * Track page scrolls
 * Change time event frequency
 * Set maximum tracking time
+* Disable for administrator role
 
 
 **Worst case scenario**
@@ -55,15 +56,15 @@ Dashboard -> Settings -> Reduce Bounce Rate.
 
 = Does it work out-of-the-box? =
 
-Yes, and you can use the options on the Settings Page to fine-tune how and when you want to send info to Analytics.
+Yes, and you can use the options on the Settings Page to fine-tune how and when you want to send or block info to Analytics.
 
 = How do I know it is working? =
 
 Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script> or when you use analytics.js for /wp-content/plugins/reduce-bounce-rate/js/analyticsjs.js'></script>
 
-By default, the script will be added to the bottom of your website. If this line is not there, your theme might not have wp_footer() in the footer.php.
+By default, the script will be added to the bottom of the page. If this line is not present, your theme might not have wp_footer() in the footer.php.
 
-After one or two days, you will probably see the Bounce Rate drop in Google Analytics. Then you will know it is working.
+After one or two days, you should see the Bounce Rate drop in Google Analytics. Then you will know it is working.
 
 = Does it this plugin work for the Asynchronous Syntax tracking code (ga.js) and the Universal Analytics (analytics.js)? =
 
@@ -90,6 +91,12 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 3.0 =
+* Added option to disable plugin
+* Added option to remove plugin code when user is an Admin
+* Greetings to the animals!
+* October 4, 2014
+
 = 2.4 =
 * Added plugin icon
 * Checked with WP 4.0
