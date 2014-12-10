@@ -3,8 +3,8 @@ Contributors: Okoth1
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
-Tested up to: 4.0
-Stable tag: 3.0
+Tested up to: 4.0.1
+Stable tag: 3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,7 @@ Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics 
 
 
 = FEATURES =
+* Compatible with Google Analytics by Yoast
 * Old and new tracking codes are supported
 * Code placement choice between header and footer
 * Track page scrolls
@@ -38,7 +39,7 @@ It's all based on a script made by Brian Cray and is totally accepted by Google 
 == Installation ==
 1. Upload plugin folder to the /wp-content/plugins/ directory
 1. Activate the plugin through the Plugins menu in WordPress
-1. See what happens to your Bounce Rates in Google Analytics after one or two days.
+1. See what happens to your Bounce Rates in Google Analytics after a day or two.
 
 
 == Other Notes ==
@@ -91,6 +92,15 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 3.1 =
+* Compatible with Google Analytics by Yoast plugin
+* Added option on Options page to choose for working with Google Analytics by Yoast plugin
+* Changed default tracking script from ga.js to analytics.js
+* Checked with WP 4.0.1
+* All good!
+* December 10, 2014
+
+
 = 3.0 =
 * Added option to disable plugin
 * Added option to remove plugin code when user is an Admin

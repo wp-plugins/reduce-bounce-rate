@@ -4,7 +4,7 @@ Plugin Name: Reduce Bounce Rate
 Plugin URI: http://wordpress.org/extend/plugins/reduce-bounce-rate/
 Description: Get the real Bounce Rate and pageviews into Google Analytics.
 Author: Okoth1
-Version: 3.0
+Version: 3.1
 License: GPLv3
 
 This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ add_action( 'admin_enqueue_scripts', 'rbr_load_scripts' );
 $rbr_defaults = array(
    'rbr_pause' => 'pauseno',
   'rbr_disableadmin' => 'disableadminno',
-  'rbr_type' => 'gajs',
+  'rbr_type' => 'analyticsjs',
   'rbr_place' => 'footer',
   'rbr_scroll' => 'scrollyes',
   'rbr_event' => 10,
@@ -188,7 +188,7 @@ When someone doesn’t track Administrators, the code of this plugin will still 
 <p>To use the plugin for all visitors (including Administrators), choose No.</p>
 </div>
 <h2>Tracking Code</h2>
-<p>Asynchronous Syntax (ga.js) or Universal Analytics tracking code (analytics.js)</p>
+<p>Universal Analytics tracking code (analytics.js), Asynchronous Syntax (ga.js) or Google Analytics by Yoast tracking code</p>
 <label class="trackingtype">
 <input type="radio" id="radio5" name="rbr_type" <?php
   if ( $rbrtype == 'gajs' )
@@ -196,7 +196,7 @@ When someone doesn’t track Administrators, the code of this plugin will still 
 ?> checked="checked" <?php
    }
 ?> value="gajs" size="20">
-ga.js (Default)</label>
+ga.js</label>
 <br />
 <label class="trackingtype">
 <input type="radio" id="radio6" name="rbr_type" <?php
@@ -205,7 +205,16 @@ ga.js (Default)</label>
 ?> checked="checked" <?php
    }
 ?> value="analyticsjs" size="20">
-analytics.js </label>
+analytics.js (Recommended) </label>
+<br />
+<label class="trackingtype">
+<input type="radio" id="radio7" name="rbr_type" <?php
+  if ( $rbrtype == 'ga4wpjs' )
+   {
+?> checked="checked" <?php
+   }
+?> value="ga4wpjs" size="20">
+if you are using the <span class="fatred">Google Analytics by Yoast plugin</span> <span class="fatunderlined">AND</span> Universal Tracking is enabled, choose this option</label>
 <div class="jbut">Info</div>
 <div class="jslid"><span class="jtbold">How do I know what tracking code I am using?</span>
 <p>Look at the page's source code.</p>
@@ -231,18 +240,33 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-XXXX-Y', 'auto');
+ga('create', 'UA-XXXXX-Y', 'auto');
 ga('send', 'pageview');
 </script>" );
 ?>
 <br />
 <br />
-<p> Most people use ga.js.</p>
+<p>The Google Analytics by Yoast tracking code looks like this</p>
+<?php
+  highlight_string( "<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+__gaTracker('create', 'UA-XXXXX-Z', 'auto');
+__gaTracker('set', 'forceSSL', true);
+__gaTracker('send','pageview');
+</script>" );
+?>
+<br />
+<br />
+<p>For some reason Yoast found it important to change 'ga' to '__gaTracker' in the tracking code.</p>
+<strong>Google advises to use analytics.js</strong>
 </div>
 <h2>Code placement</h2>
 <p>Where do you want to put the code?</p>
 <label class="place">
-<input type="radio" id="radio7" name="rbr_place" <?php
+<input type="radio" id="radio8" name="rbr_place" <?php
   if ( $rbrplace == 'footer' )
    {
 ?> checked="checked" <?php
@@ -251,7 +275,7 @@ ga('send', 'pageview');
 Footer (Recommended) </label>
 <br />
 <label class="place">
-<input type="radio" id="radio8" name="rbr_place" <?php
+<input type="radio" id="radio9" name="rbr_place" <?php
   if ( $rbrplace == 'header' )
    {
 ?> checked="checked" <?php
@@ -266,7 +290,7 @@ Header (make sure the code is placed after your Google Analytics tracking code) 
 <h2>Scroll on page</h2>
 <p>Do you want to track page scrolls?</p>
 <label class="radio">
-<input type="radio" id="radio9" name="rbr_scroll" <?php
+<input type="radio" id="radio10" name="rbr_scroll" <?php
   if ( $rbrscroll == 'scrollyes' )
    {
 ?> checked="checked" <?php
@@ -275,7 +299,7 @@ Header (make sure the code is placed after your Google Analytics tracking code) 
 Yes (Recommended) </label>
 <br />
 <label class="radio">
-<input type="radio" id="radio10" name="rbr_scroll" <?php
+<input type="radio" id="radio11" name="rbr_scroll" <?php
   if ( $rbrscroll == 'scrollno' )
    {
 ?> checked="checked" <?php
@@ -383,6 +407,13 @@ function rbr_scripts( )
      {
       $rbrplace = get_option( 'rbr_place' );
       wp_enqueue_script( 'rbr_scripts', plugins_url( 'js/analyticsjs.js', __FILE__ ), array(
+         'jquery' 
+      ), '', ( $rbrplace == 'footer' ) );
+     }
+	 elseif ( get_option( 'rbr_pause' ) == "pauseno" && $rbrtype == 'ga4wpjs' )
+     {
+      $rbrplace = get_option( 'rbr_place' );
+      wp_enqueue_script( 'rbr_scripts', plugins_url( 'js/ga4wpjs.js', __FILE__ ), array(
          'jquery' 
       ), '', ( $rbrplace == 'footer' ) );
      }
