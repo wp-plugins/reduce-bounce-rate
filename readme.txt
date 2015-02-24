@@ -93,6 +93,11 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 == Changelog ==
 = 3.1 =
+* Checked with WP 4.1.1
+* All good!
+* February 25, 2015
+
+= 3.1 =
 * Compatible with Google Analytics by Yoast plugin
 * Added option on Options page to choose for working with Google Analytics by Yoast plugin
 * Changed default tracking script from ga.js to analytics.js
