@@ -4,7 +4,7 @@ Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, 
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
 Tested up to: 4.1.1
-Stable tag: 3.1
+Stable tag: 3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,10 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 3.2 =
+* Fixed "Uncaught TypeError: undefined is not a function" error.
+* March 20, 2015
+
 = 3.1 =
 * Checked with WP 4.1.1
 * All good!
