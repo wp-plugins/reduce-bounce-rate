@@ -218,6 +218,19 @@ if you are using the <span class="fatred">Google Analytics by Yoast plugin</span
 <div class="jbut">Info</div>
 <div class="jslid"><span class="jtbold">How do I know what tracking code I am using?</span>
 <p>Look at the page's source code.</p>
+<p>The analytics.js tracking code looks like this</p>
+<?php
+  highlight_string( "<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+</script>" );
+?>
+<br />
+<br />
 <p>The ga.js tracking code looks more or less like this</p>
 <?php
   highlight_string( "<script type='text/javascript'>
@@ -229,19 +242,6 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-</script>" );
-?>
-<br />
-<br />
-<p>The analytics.js tracking code looks like this</p>
-<?php
-  highlight_string( "<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-XXXXX-Y', 'auto');
-ga('send', 'pageview');
 </script>" );
 ?>
 <br />
@@ -360,7 +360,7 @@ seconds. </label>
 <div class="jbut">Info</div>
 <div class="jslid">
 <p>Default is 15 minutes.</p>
-<p>You should look at the Avg. Time on Page stats to find out what Maximum Tracking Time is right for your website. Large content or a video website need a bigger Maximum Tracking Time than a website with one-liners.</p>
+<p>You should look at the Avg. Time on Page stats to find out what Maximum Tracking Time is right for your website. Large content or a video website need a longer Maximum Tracking Time than a website with one-liners.</p>
 </div>
 <br />
 <br />
