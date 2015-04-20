@@ -3,15 +3,15 @@ Contributors: Okoth1
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
-Tested up to: 4.1.1
-Stable tag: 3.2
+Tested up to: 4.2
+Stable tag: 3.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Get the real Bounce Rate and Time On Site in Google Analytics. Simple and effective.
 
 == Description ==
-Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics calculates the Time On Site based on the length of time between a user entering your site and their last page view. This won\'t give you the REAL Time on Site and Bounce Rate stats.
+Get the real Time On Site and Bounce Rate in Google Analytics. Google Analytics calculates the Time On Site based on the length of time between a user entering your site and their last page view. This won't give you the REAL Time on Site and Bounce Rate stats.
 
 
 = FEATURES =
@@ -57,19 +57,19 @@ Dashboard -> Settings -> Reduce Bounce Rate.
 
 = Does it work out-of-the-box? =
 
-Yes, and you can use the options on the Settings Page to fine-tune how and when you want to send or block info to Analytics.
+Yes, if you use the Universal Analytics (analytics.js). If you are still using the older ga.js tracking code or if Yoast's WordpPress SEO plugin is active, you have go to the Settings Page to choose the one you use. There you can fine-tune how and when you want to send or block info to Analytics.
 
 = How do I know it is working? =
 
-Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script> or when you use analytics.js for /wp-content/plugins/reduce-bounce-rate/js/analyticsjs.js'></script>
+Check you page source for a line that ends with: /wp-content/plugins/reduce-bounce-rate/js/analyticsjs.js'></script> for analytics.js, /wp-content/plugins/reduce-bounce-rate/js/gajs.js'></script> for ga.js and /wp-content/plugins/reduce-bounce-rate/js/ga4wpjs.js'></script> for working together with WordPress SEO.
 
 By default, the script will be added to the bottom of the page. If this line is not present, your theme might not have wp_footer() in the footer.php.
 
-After one or two days, you should see the Bounce Rate drop in Google Analytics. Then you will know it is working.
+After a day, you should see the Bounce Rate drop in Google Analytics. Then you'll know for sure it's working.
 
-= Does it this plugin work for the Asynchronous Syntax tracking code (ga.js) and the Universal Analytics (analytics.js)? =
+= Does it this plugin work for the Universal Analytics (analytics.js) and the (older) Asynchronous Syntax tracking code (ga.js)? =
 
-Yes. By default the plugin works for ga.js. Just change it to analytics.js on the Settings Page to make it work for analytics.js.
+Yes. By default the plugin works for analytics.js. Just change it to ga.js on the Settings Page to make it work for ga.js.
 
 = Can I set the maximum tracking time? =
 
@@ -80,7 +80,7 @@ Yes, on the Settings Page.
 Yes, on the Settings Page.
 
 = Will Google still like me after I manipulated the Analytics stats? =
-Yes. This plugin uses the same tweak Google suggested on it's own Blog (see [Other Notes]( http://wordpress.org/plugins/reduce-bounce-rate/other_notes/) for the link to the page).
+Yes. This plugin uses the same tweak Google suggested on it's own Blog (see [Other Notes]( http://wordpress.org/plugins/reduce-bounce-rate/other_notes/) for the link to the page). 
 
 = Will I loose my PageRank by using this plugin? =
 No. Google Analytics doesn't have anything to do with PageRank. Google doesn't use any statistics from your Analytics pages for page ranking. Google has it's own way of getting the stats it wants to use. This also means that you cannot influence your PageRank with this plugin.
@@ -92,6 +92,13 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 3.2.1 =
+* analytics.js has become default instead of ga.js
+* adjusted FAQ text 
+* Checked with WP 4.2
+* All good!
+* April 21, 2015
+
 = 3.2 =
 * Fixed "Uncaught TypeError: undefined is not a function" error.
 * March 20, 2015
