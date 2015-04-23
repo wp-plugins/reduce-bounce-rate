@@ -95,7 +95,7 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 = 3.2.1 =
 * analytics.js has become default instead of ga.js
 * adjusted FAQ text 
-* Checked with WP 4.1.2
+* Checked with WP 4.2
 * All good!
 * April 21, 2015
 
