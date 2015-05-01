@@ -3,8 +3,8 @@ Contributors: Okoth1
 Tags: bounce rate, seo, analytics, google, google analytics, statistics, stats, tracking, time on site
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=okoth1%40gmail%2ecom&item_name=Okoth1&item_number=plugin¤cy_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 2.6
-Tested up to: 4.2
-Stable tag: 3.2.1
+Tested up to: 4.2.1
+Stable tag: 3.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,7 +39,7 @@ It's all based on a script made by Brian Cray and is totally accepted by Google 
 == Installation ==
 1. Upload plugin folder to the /wp-content/plugins/ directory
 1. Activate the plugin through the Plugins menu in WordPress
-1. See what happens to your Bounce Rates in Google Analytics after a day or two.
+1. See what happens to your Bounce Rates in Google Analytics after a day.
 
 
 == Other Notes ==
@@ -92,6 +92,12 @@ No. Google Analytics doesn't have anything to do with PageRank. Google doesn't u
 
 
 == Changelog ==
+= 3.2.2 =
+* Included ga4wpjs.js in the tags dir
+* Checked with WP 4.2.1
+* All good!
+* May 2, 2015
+
 = 3.2.1 =
 * analytics.js has become default instead of ga.js
 * adjusted FAQ text 
